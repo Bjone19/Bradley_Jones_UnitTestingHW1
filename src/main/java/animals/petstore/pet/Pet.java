@@ -13,6 +13,10 @@ public class Pet extends AbstractPet
     private BigDecimal cost;
 
     protected int petStoreId; //id will be populated if animal type is PET
+    public Pet()
+    {
+
+    }
 
     /**
      * Constructor
@@ -68,6 +72,7 @@ public class Pet extends AbstractPet
         return this.petStoreId;
     }
 
+    @Override
     public String toString()
     {
         if(this.getPetStoreId() == 0)

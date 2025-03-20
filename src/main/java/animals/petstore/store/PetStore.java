@@ -49,6 +49,15 @@ public class PetStore
     }
 
     /**
+     * Constructor used for unit testing
+     * @param addPet - used to add item to the default list without using addInventory.
+     */
+    public void initAddDuplicateItem(Pet addPet)
+    {
+        this.init();
+        this.addPetInventoryItem(addPet);
+    }
+    /**
      * Print the inventory left in the pets for sale list
      */
     public void printInventory()
@@ -84,7 +93,6 @@ public class PetStore
             return foundCat;
         }
     }
-
     /**
      * Add item to the inventory list
      * @param pet {@link Pet} to be added to the inventory
@@ -129,18 +137,12 @@ public class PetStore
      * @return the {@link Dog} that was sold
      * @throws DuplicatePetStoreRecordException if there is duplicate dog record
      */
-    private Dog identifySoldDogFromInventory(Dog soldDog) throws DuplicatePetStoreRecordException
-    {
-        List<Pet> dogPets = this.petsForSale.stream()
-                .filter(p -> ((p instanceof Dog)
-                        && (p.getPetStoreId() == soldDog.getPetStoreId())))
-                .collect(Collectors.toList());
-
-        if (dogPets.isEmpty())
-        {
-            return null;
-        }
-        else if (dogPets.size()==1)
+    private Dog identifySoldDogFromInventory(Dog soldDog) throws DuplicatePetStoreRecordException, PetNotFoundSaleException {
+        List<Pet> dogPets= this.petsForSale.stream()
+                    .filter(p -> ((p instanceof Dog)
+                            && (p.getPetStoreId() == soldDog.getPetStoreId())))
+                    .collect(Collectors.toList());
+        if (dogPets.size()==1)
         {
             return (Dog) dogPets.get(0);
         }
@@ -162,11 +164,7 @@ public class PetStore
                         && (p.getPetStoreId() == soldCat.getPetStoreId())))
                 .collect(Collectors.toList());
 
-        if (catPets.isEmpty())
-        {
-            return null;
-        }
-        else if (catPets.size()==1)
+        if (catPets.size()==1)
         {
             return (Cat) catPets.get(0);
         }
