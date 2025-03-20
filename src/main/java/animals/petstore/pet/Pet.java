@@ -13,11 +13,6 @@ public class Pet extends AbstractPet
     private BigDecimal cost;
 
     protected int petStoreId; //id will be populated if animal type is PET
-    public Pet()
-    {
-
-    }
-
     /**
      * Constructor
      * @param petType The {@link PetType}

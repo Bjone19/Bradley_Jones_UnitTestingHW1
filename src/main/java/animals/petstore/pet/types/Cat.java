@@ -17,10 +17,6 @@ public class Cat extends Pet implements PetImpl {
     /* Properties */
     private int numberOfLegs;
     private Breed breed;
-    public Cat()
-    {
-        super();
-    }
     /**
      * Constructor
      * @param animalType {@link AnimalType} that defines if it domesticated or wild cat
