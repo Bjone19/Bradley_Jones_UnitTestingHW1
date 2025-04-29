@@ -22,7 +22,7 @@ public class Pet extends AbstractPet
     public Pet(PetType petType, BigDecimal cost, Gender gender)
     {
         this(petType, cost, gender, 0);
-     }
+    }
 
     /**
      * Constructor
@@ -59,7 +59,7 @@ public class Pet extends AbstractPet
 
     public void setPetStoreId(int storeId)
     {
-       this.petStoreId = storeId;
+        this.petStoreId = storeId;
     }
 
     public int getPetStoreId()
